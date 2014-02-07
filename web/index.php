@@ -1,16 +1,13 @@
 <?php
 
-    include dirname(__DIR__).'/vendor/autoloader.php';
-
-    set_exception_handler(function($e){
-        die($e->getMessage().'<hr>'.'<pre>'.$e->getTraceAsString().'</pre>');
-    });
+    include dirname(__DIR__).'/autoloader/autoloader.php';
+    include dirname(__DIR__).'/site/handlers.php';
 
     $mi = new mimimi;
 
     $mi->set_construct_params(array(
-        'Config'=>array('base_dir'=>dirname(__DIR__).'/assets/configs/'),
-        'View'=>array('base_dir'=>dirname(__DIR__).'/assets/views/'),
+        'Config'=>array('base_dir'=>dirname(__DIR__).'/site/configs/'),
+        'View'=>array('base_dir'=>dirname(__DIR__).'/site/views/'),
     ));
 
     $mi->app->start();
