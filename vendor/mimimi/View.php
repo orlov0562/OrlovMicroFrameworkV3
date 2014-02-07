@@ -2,6 +2,7 @@
     class View extends Mi
     {
         private $vars = array();
+        private $template = null;
 
         protected $params = array(
           'base_dir' => './'
@@ -53,10 +54,21 @@
             return $this;
         }
 
-        public function render($view, $return=FALSE)
+        public function template($template)
         {
-            $view_filepath = $this->params['base_dir'].strtolower(trim($view)).'.php';
-            if (!is_readable($view_filepath)) throw new Exception('View '.$view.' not found');
+            $this->template = $template;
+            return $this;
+        }
+
+        public function render($template=null, $output=FALSE)
+        {
+            if (is_null($template))
+            {
+                throw new Exception('Undefined tempalte');
+            }
+
+            $view_filepath = $this->params['base_dir'].strtolower(trim($template)).'.php';
+            if (!is_readable($view_filepath)) throw new Exception('View '.$template.' not found');
 
             $old_err_reporting_level = error_reporting();
             error_reporting($old_err_reporting_level & ~E_NOTICE);
@@ -65,6 +77,15 @@
             include $view_filepath;
             $ret = ob_get_clean();
             error_reporting($old_err_reporting_level);
-            if (!$return) echo $ret; else return $ret;
+            if ($output) echo $ret; else return $ret;
+        }
+
+        public function __toString()
+        {
+             try {
+                return $this->render($this->template);
+             } catch (Exception $e) {
+                trigger_error($e->getMessage());
+             }
         }
     }

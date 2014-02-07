@@ -16,9 +16,9 @@
                 if (preg_match('~^'.$regexp.'$~Usix', $params, $regs))
                 {
                     $params = array(
-                        'regexp' => $regs[1],
-                        'callback' => $regs[2],
-                        'name' => $regs[3],
+                        'regexp' => trim($regs[1]),
+                        'callback' => trim($regs[2]),
+                        'name' => trim($regs[3]),
                     );
                 }
             }

@@ -1,12 +1,10 @@
 <?php
 
-    class Controller_Home extends Controller
+    class Controller_Home extends ControllerPageTemplate
     {
         public function Action_Index()
         {
-            $this->mi->get('view')
-            ->set('content', $this->mi->get('view')->render('home', TRUE))
-            ->set('menu', $this->mi->get('view')->render('menu', TRUE))
-            ->render('index');
+            $this->seo_title = 'Home - '.$this->seo_title;
+            $this->body = $this->mi->get('view')->render('home');
         }
     }

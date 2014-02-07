@@ -1,3 +1,5 @@
+<h1>Home</h1>
+
 Current route:<br>
 <pre>
 <?php

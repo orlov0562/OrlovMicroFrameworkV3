@@ -6,8 +6,6 @@
         die($e->getMessage().'<hr>'.'<pre>'.$e->getTraceAsString().'</pre>');
     });
 
-    header('Content-Type: text/html; charset=utf-8');
-
     $mi = new mimimi;
 
     $mi->set_construct_params(array(
