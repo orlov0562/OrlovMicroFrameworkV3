@@ -14,9 +14,6 @@ Current request:<br>
 </pre>
 
 <hr>
-Url Absolute path:<br>
-<pre>
-<?php
-    print_r($this->mi->url->absolute('/'));
-?>
-</pre>
+Url Base path: <?=$this->mi->url->base('home');?><br>
+Url Absolute path: <?=$this->mi->url->absolute('home');?><br>
+

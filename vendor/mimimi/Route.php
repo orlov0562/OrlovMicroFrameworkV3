@@ -2,6 +2,46 @@
 
     class Route extends Mi
     {
+
+        public function create($params)
+        {
+
+            if (is_string($params))
+            {
+                $regexp = '
+                    IF \s* `([^`]+)` \s*
+                    THEN \s* `([^`]+)` \s*
+                    (?:AS \s* `([^`]+)`)?
+                ';
+                if (preg_match('~^'.$regexp.'$~Usix', $params, $regs))
+                {
+                    $params = array(
+                        'regexp' => $regs[1],
+                        'callback' => $regs[2],
+                        'name' => $regs[3],
+                    );
+                }
+            }
+
+            if (!isset($params['regexp']))
+            {
+                throw new Exception('Undefined regexp in route');
+            }
+
+            if (!isset($params['callback']))
+            {
+                throw new Exception('Undefined callback in route');
+            }
+
+            if (!isset($params['name']))
+            {
+                $params['name'] = 'default';
+            }
+
+
+            return (object) $params;
+        }
+
         /**
          *  obj->execute('Home');
          *  Будет вызван: Controller_Home::Action_Index(array())

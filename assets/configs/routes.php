@@ -1,17 +1,13 @@
 <?php
     return array(
 
-        (object) array(
+        $this->mi->route->create(array(
             'regexp'=>$this->mi->route_helper->from_regexp('/'),
             'callback'=>'Home::Index',
             'name'=>'home',
+        )),
+
+        $this->mi->route->create(
+            'IF `~.*~` THEN `Error::404` AS `err404`'
         ),
-
-        (object) array(
-            'regexp'=>'~.*~',
-            'callback'=>'Error::404',
-            'name'=>'err404',
-        ),
-
-
     );
