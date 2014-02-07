@@ -32,8 +32,8 @@
         }, $class);
 
         $classdirs = array(
-            dirname(__DIR__).'/vendor/mimimi',
             dirname(__DIR__).'/classes',
+            dirname(__DIR__).'/vendor/mimimi',
         );
 
         foreach ($classdirs as $dir)
