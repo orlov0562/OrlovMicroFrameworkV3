@@ -5,6 +5,8 @@
         public function start()
         {
 
+            $this->mi->system->show_php_errors();
+
             $routes = $this->mi->config->get('routes');
             $path = $this->mi->request->uri;
 
