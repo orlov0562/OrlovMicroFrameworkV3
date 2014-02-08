@@ -12,6 +12,7 @@ $time_start = microtime(true);
     $mi->set_construct_params(array(
         'Config'=>array('base_dir'=>dirname(__DIR__).'/site/configs/'),
         'View'=>array('base_dir'=>dirname(__DIR__).'/site/views/'),
+        'Path'=>array('base_dir'=>dirname(__FILE__).'/'),        
     ));
 
     $mi->app->start();

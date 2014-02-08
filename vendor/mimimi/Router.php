@@ -9,6 +9,7 @@
             {
                 if (preg_match($route->regexp, $path, $regs))
                 {
+                    array_shift($regs);
                     $route->vars = $regs;
                     $ret = $route;
                     break;

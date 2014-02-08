@@ -23,6 +23,7 @@ Current request:<br>
 </pre>
 
 <hr>
+App Dir base path: <?=$this->mi->path->base();?><br>
 Url Base path: <?=$this->mi->url->base('home');?><br>
 Url Absolute path: <?=$this->mi->url->absolute('home');?><br>
 

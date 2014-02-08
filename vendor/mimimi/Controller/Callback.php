@@ -14,9 +14,16 @@
         public function execute($callback, $vars=array())
         {
             $co = $this->get_callback_object($callback, $vars);
+
             $this->mi->{$co->controller_class}->before();
-            $this->mi->{$co->controller_class}->{$co->action_method}($vars);
+
+            call_user_func_array(array(
+                $this->mi->{$co->controller_class},
+                $co->action_method
+            ), $vars);
+
             $this->mi->{$co->controller_class}->after();
+
             return $this;
         }
 

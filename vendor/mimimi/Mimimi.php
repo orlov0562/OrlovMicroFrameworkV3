@@ -20,9 +20,19 @@
             return $this->instances[$class];
         }
 
-        public function get($class) // Создает новый объект
+        /**
+         *  Этот метод в отличии от __get создает новые экземляры,
+         *  а не "синглтоны" ( в __get объекты кешируются).
+         *
+         *  Новые объекты нужны, если у них могут быть разные свойства.
+         *
+         *  При $format, FALSE имя класса не будет форматироваться, бывает полезно
+         *  когда используются сторонние классы. Тогда их имена не надо форматировать
+         *  Например: SimpleImage.php, вместо Simpleimage.php
+         */
+        public function get($class, $format=TRUE) // Создает новый объект
         {
-            $class = $this->format_class_name($class);
+            if ($format) $class = $this->format_class_name($class);
             return new $class($this, isset($this->construct_params[$class])
                                      ? $this->construct_params[$class]
                                      : array()
