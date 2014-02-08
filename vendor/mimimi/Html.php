@@ -81,5 +81,14 @@
             );
         }
 
+        public function esc($str)
+        {
+            return htmlentities($str, ENT_NOQUOTES, 'UTF-8');
+        }
+
+        public function esc_attr($str)
+        {
+            return htmlentities($str, ENT_QUOTES, 'UTF-8');
+        }
 
     }

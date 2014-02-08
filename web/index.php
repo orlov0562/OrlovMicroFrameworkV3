@@ -1,5 +1,9 @@
 <?php
 
+
+$time_start = microtime(true);
+
+
     include dirname(__DIR__).'/autoloader/autoloader.php';
     include dirname(__DIR__).'/site/handlers.php';
 
@@ -11,3 +15,6 @@
     ));
 
     $mi->app->start();
+
+
+echo '<!-- Время генерации страницы '.(microtime(true) - $time_start).' секунд -->';

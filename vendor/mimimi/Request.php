@@ -53,7 +53,8 @@
                  : '/';
 
             if ($pos_get = strpos($ret, '?')) $ret = substr($ret, 0, $pos_get);
-
+            $ret = preg_replace('~^'.preg_quote($this->mi->config->get('app.basepath'),'~').'~','/',$ret);
+            
             return $ret;
         }
 

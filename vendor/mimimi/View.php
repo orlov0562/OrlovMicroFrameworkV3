@@ -62,10 +62,7 @@
 
         public function render($template=null, $output=FALSE)
         {
-            if (is_null($template))
-            {
-                throw new Exception('Undefined tempalte');
-            }
+            if (is_null($template)) throw new Exception('Undefined tempalte');
 
             $view_filepath = $this->params['base_dir'].strtolower(trim($template)).'.php';
             if (!is_readable($view_filepath)) throw new Exception('View '.$template.' not found');
